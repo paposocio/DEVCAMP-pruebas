@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const CouseSchema = mongoose.Schema({
   title: {
     type:String,
-    required: [true,"Clave obligatoria"],
+    required: [true,"Titulo obligatorio"],
     maxlength: [50,"Longitud maxima de 50"]
   },
   description:{
@@ -14,13 +14,13 @@ const CouseSchema = mongoose.Schema({
     type:Number,
     required:[true,"Duracion obligatoria"]
   },
-  tuiton:{
+  enrollCost:{
     type:Number,
     required:[true,"Matricula obligatoria"]
   },
   minimumSkill:{
     type:String,
-    enum: ["Beginner","Intermediate","Advanced"],
+    enum: ["Beginner","Intermediate","Advanced","Expert"],
     required:[true,"Nivel obligatorio"]
   },
   createdAt:Date

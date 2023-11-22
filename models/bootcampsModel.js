@@ -5,11 +5,11 @@ const BootcampSchema = mongoose.Schema({
      type: String,
      required: [true,"Nombre obligatorio"],
      unique:true,
-     maxlength: [50,"Longitud maxima de 50"]
+     maxlength: [20,"Longitud maxima de 20"]
     },
     phone:{
         type:Number,
-        maxlength: [10,"Longitud maxima de 10"]
+        max: [10,"Longitud maxima de 10"]
     },
     address:{
         type:String,

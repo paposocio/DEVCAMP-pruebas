@@ -1,51 +1,79 @@
 const express = require("express");
+const Course = require("../models/courseModel");
+const { default: mongoose } = require("mongoose");
 
-//definimos el ruteador de los cursos
+// Define the router for 'cursos'
 const router = express.Router();
 
-//uris de cursos (direcciones o identificadores de recursos)
-// URI de todos los cursos
+// URI for all cursos
+router.get("/", async (request, response) => {
+  const cursos = await Course.find();
 
-router.get('/curses', (request, response) => {
-    return response.json({
+  // Scenario 1: There are no cursos in the database
+  if (cursos.length > 0) {
+    // There are courses in the database
+    response.status(200).json({
       success: true,
-      message: 'Seleccionando todos los cursos'
-    })
-  })
-  
-  // URI de un curso por ID
-  router.get('/curses/:id', (request, response) => {
-    const curseId = request.params.id
-    return response.json({
-      success: true,
-      message: `Seleccionando el curso con ID: ${curseId}`
-    })
-  })
-  
-  // Crear un curso
-  router.post('/curses', (request, response) => {
-    return response.json({
-      success: true,
-      message: 'Creando un curso'
-    })
-  })
-  
-  // Actualizar un curso por ID
-  router.put('/curses/:id', (request, response) => {
-    const curseId = request.params.id
-    return response.json({
-      success: true,
-      message: `Actualizando el curso con ID: ${curseId}`
-    })
-  })
-  
-  // Eliminar un curso por ID
-  router.delete('/curses/:id', (request, response) => {
-    const curseId = request.params.id
-    return response.json({
-      success: true,
-      message: `Eliminando el curso con ID: ${curseId}`
-    })
-  })
+      data: cursos,
+    });
+  } else {
+    // There are no courses in the database
+    response.status(404).json({
+      success: false,
+      msg: "No hay cursos",
+    });
+  }
+});
 
-  module.exports = router
+// URI for a curso by ID
+router.get("/:id", async (request, response) => {
+  const cursoId = request.params.id;
+
+  try {
+    if (!mongoose.Types.ObjectId.isValid(cursoId)) {
+      return response.status(500).json({
+        success: false,
+        msg: "Id inválido",
+      });
+    } else {
+      const curso = await Course.findById(cursoId);
+
+      if (!curso) {
+        response.status(404).json({
+          success: false,
+          msg: "Curso no encontrado",
+        });
+      } else {
+        response.status(200).json({
+          success: true,
+          data: curso,
+        });
+      }
+    }
+  } catch (error) {
+    return response.status(500).json({
+      success: false,
+      msg: `Error encontrado: ${error.message}`,
+    });
+  }
+});
+
+// Create a curso
+router.post("/", async (request, response) => {
+  try {
+    // Save the curso from the request body
+    const newCurso = await Course.create(request.body);
+
+    return response.status(201).json({
+      success: true,
+      data: newCurso,
+    });
+  } catch (error) {
+    response.status(500).json({
+      success: false,
+      data: `Error encontrado: ${error.message}`,
+    });
+  }
+});
+
+module.exports = router;
