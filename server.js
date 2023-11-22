@@ -1,66 +1,38 @@
-const express = require('express')
+// server.js
+const express = require("express");
+const dotenv = require("dotenv");
+const colors = require("colors");
+const connectDB = require("./config/db");
+
+//establecer configuraciones
+dotenv.config({ path: "./config/.env" });
 
 //crear el objeto express
-const app = express()
+const app = express();
 
-//url o ruta de prueba y definimos la accion que queremos que realice
-app.get('/prueba',(request,response)=>{
-    //ejemplo de response o respuesta
-    response.send('messi')
-})
+//dependencia formateo body del json
+app.use(express.json())
 
-//uris de bootcamps (direcciones 
-//o identificadores de recursos)
-app.get(('/bootcamps'),
-        (request,response)=>{
-            return response.json({
-                success:true,
-                message:"seleccionando todos los bootcamp"
-            })
-        })
+//ejecucion conexion BD
+connectDB()
 
-//uri de bootcamps por id 
-app.get(('/bootcamps/:id'),
-(request,response)=>{
-    bootcampid=request.params.id
-    return response.json({
-        success:true,
-        message:'seleccionando todos los bootcamp con id: '+bootcampid
-    })
-})
+//uri o ruta de prueba y definimos la accion que queremos que realice
+app.get("/prueba", (request, response) => {
+  //ejemplo de response o respuesta
+  response.send("messi");
+});
 
-//crear bootcamp
-app.post(('/bootcamps'),
-        (request,response)=>{
-            return response.json({
-                success:true,
-                message:"crear bootcamp"
-            })
-        })
+const bootcampsRoutes = require("./routes/bootcampsROUTES.JS");
+app.use("/bootcamps", bootcampsRoutes);
 
-//actualizar bootcamp por id 
-app.put(('/bootcamps/:id'),
-        (request,response)=>{
-            bootcampid=request.params.id
-            return response.json({
-                success:true,
-                message:'actualizando bootcamp con id: '+bootcampid
-            })
-        })
-
-//actualizar bootcamp por id 
-app.delete(('/bootcamps/:id'),
-        (request,response)=>{
-            bootcampid=request.params.id
-            return response.json({
-                success:true,
-                message:'eliminando bootcamp con id: '+bootcampid
-            })
-        })
+const coursesRoutes = require("./routes/coursesRoutes.js");
+app.use("/courses", coursesRoutes);
 
 //definir puerto del server
-const puerto = 4500
+const puerto = process.env.PUERTO;
 
 //definicion de server
-app.listen(puerto,
-    console.log('Server ejecutandose en '+ puerto))
+app.listen(
+  puerto,
+  console.log(colors.bgYellow.bold(`Server ejecutandose en ${puerto}`))
+);

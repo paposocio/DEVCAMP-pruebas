@@ -1,0 +1,153 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "devcamp-2687350",
+    "dateExported": "2023-10-25T05:36:34.936Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "43b38d8b-009f-46ff-977a-0ca44fe70493",
+            "name": "bootcamps",
+            "containerId": "",
+            "created": "2023-10-18T02:22:28.875Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "b72f7633-241f-42b7-a0ac-8039384295c6",
+            "colId": "e938e47e-0614-4bed-8718-5dc0abb0002a",
+            "containerId": "43b38d8b-009f-46ff-977a-0ca44fe70493",
+            "name": "prueba",
+            "url": "http://127.0.0.1:4500/prueba",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-10-18T02:22:39.492Z",
+            "modified": "2023-10-18T02:41:24.846Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "26cba7d6-be87-4d35-ae20-db0d832ed679",
+            "colId": "e938e47e-0614-4bed-8718-5dc0abb0002a",
+            "containerId": "43b38d8b-009f-46ff-977a-0ca44fe70493",
+            "name": "traer TODOS los bootcamps ",
+            "url": "http://127.0.0.1:4500/bootcamps",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-10-18T02:41:55.592Z",
+            "modified": "2023-10-18T02:43:18.406Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "92d3c686-2940-4c7f-85b6-a036f0191733",
+            "colId": "e938e47e-0614-4bed-8718-5dc0abb0002a",
+            "containerId": "43b38d8b-009f-46ff-977a-0ca44fe70493",
+            "name": "traer bootcamp por ID",
+            "url": "http://127.0.0.1:4500/bootcamps/1",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-10-18T02:53:36.722Z",
+            "modified": "2023-10-25T04:57:38.656Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5e262ca5-72be-448a-99a3-9628d87cf479",
+            "colId": "e938e47e-0614-4bed-8718-5dc0abb0002a",
+            "containerId": "43b38d8b-009f-46ff-977a-0ca44fe70493",
+            "name": "crear bootcamp",
+            "url": "http://127.0.0.1:4500/bootcamps",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-10-18T03:00:18.173Z",
+            "modified": "2023-10-18T03:01:46.163Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b79b19d1-8002-4cff-aa44-c221fc1973ff",
+            "colId": "e938e47e-0614-4bed-8718-5dc0abb0002a",
+            "containerId": "43b38d8b-009f-46ff-977a-0ca44fe70493",
+            "name": "actualizar bootcamp por id",
+            "url": "http://127.0.0.1:4500/bootcamps/3",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2023-10-18T03:05:38.702Z",
+            "modified": "2023-10-18T03:08:50.768Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "70ad390e-1abd-4cfb-ae95-f6a26b05a94a",
+            "colId": "e938e47e-0614-4bed-8718-5dc0abb0002a",
+            "containerId": "43b38d8b-009f-46ff-977a-0ca44fe70493",
+            "name": "eliminar bootcamp por ID",
+            "url": "http://127.0.0.1:4500/bootcamps/2",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2023-10-18T03:07:16.337Z",
+            "modified": "2023-10-18T03:08:46.897Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "983f12f4-acd3-4ff8-8f1b-e0cfe0191044",
+            "colId": "e938e47e-0614-4bed-8718-5dc0abb0002a",
+            "containerId": "",
+            "name": "traer todos los bootcamps",
+            "url": "http://127.0.0.1:4500/bootcamps/65389d4a8243086b0b850665",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2023-10-25T04:26:52.005Z",
+            "modified": "2023-10-25T04:58:40.700Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "6fe0adab-0d96-4e4d-abe0-f348374b3f91",
+            "colId": "e938e47e-0614-4bed-8718-5dc0abb0002a",
+            "containerId": "",
+            "name": "bootcamp por id",
+            "url": "http://127.0.0.1:4500/bootcamps/65389d4a8243086b0b850665",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2023-10-25T04:59:47.396Z",
+            "modified": "2023-10-25T05:11:36.440Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c17259d7-6210-4aae-9749-d631132d2747",
+            "colId": "e938e47e-0614-4bed-8718-5dc0abb0002a",
+            "containerId": "",
+            "name": "Crear bootcamp",
+            "url": "http://127.0.0.1:4500/bootcamps",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2023-10-25T05:13:44.151Z",
+            "modified": "2023-10-25T05:35:39.395Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Red HatLinux DevOps\",\n  \"phone\":321654987,\n  \"address\":\"Sena cl 52\",\n  \"topics\":[\"Devops\"],\n  \"createdAt\":\"2023-10-24\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
