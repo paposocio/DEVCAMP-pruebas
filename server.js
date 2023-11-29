@@ -28,6 +28,9 @@ app.use("/bootcamps", bootcampsRoutes);
 const coursesRoutes = require("./routes/coursesRoutes.js");
 app.use("/courses", coursesRoutes);
 
+const usersRoutes = require("./routes/usersRoutes.js");
+app.use("/auth", usersRoutes);
+
 //definir puerto del server
 const puerto = process.env.PUERTO;
 

@@ -1,42 +1,61 @@
-  // URI de todos los usuarios
-  app.get('/users', (request, response) => {
-    return response.json({
+const express = require("express");
+const User = require("../models/usersModel");
+const mongoose = require("mongoose");
+const usersModel = require("../models/usersModel");
+
+//definimos el ruteador de los user
+const router = express.Router();
+
+//crear user
+router.post("/register", async (request, response) => {
+  try {
+    //guardar user que viene de body
+    const user = await User.create(request.body);
+
+    response.status(201).json({
       success: true,
-      message: 'Seleccionando todos los usuarios'
-    })
-  })
-  
-  // URI de un usuario por ID
-  app.get('/users/:id', (request, response) => {
-    const userId = request.params.id
-    return response.json({
-      success: true,
-      message: `Seleccionando el usuario con ID: ${userId}`
-    })
-  })
-  
-  // Crear un usuario
-  app.post('/users', (request, response) => {
-    return response.json({
-      success: true,
-      message: 'Creando un usuario'
-    })
-  })
-  
-  // Actualizar un usuario por ID
-  app.put('/users/:id', (request, response) => {
-    const userId = request.params.id
-    return response.json({
-      success: true,
-      message: `Actualizando el usuario con ID: ${userId}`
-    })
-  })
-  
-  // Eliminar un usuario por ID
-  app.delete('/users/:id', (request, response) => {
-    const userId = request.params.id
-    return response.json({
-      success: true,
-      message: `Eliminando el usuario con ID: ${userId}`
-    })
-  })
+      data: user,
+    });
+  } catch (error) {
+    response.status(500).json({
+      success: false,
+      msg: error.message,
+    });
+  }
+});
+
+  //login user
+  router.post("/login", async (request, response) => {
+    try {
+      const { email, password } = request.body;
+      const user = await usersModel.findOne({ email });
+      console.log(user);
+
+      if (!user) {
+        response.status(401).json({
+          success: false,
+          msg: "no existe el user",
+        });
+      } else {
+        const isMatch = await user.comapararPassword(password);
+        if (!isMatch) {
+          response.status(401).json({
+            success: false,
+            msg: "credenciales invalidas",
+          });
+        } else {
+          response.status(200).json({
+            success: true,
+            msg: "logueado correctamente",
+          });
+        }
+      }
+    } catch (error) {
+      response.status(500).json({
+        success: false,
+        data: `Error encontrado: ${error.message}`,
+      });
+    }
+  });
+
+module.exports = router;
